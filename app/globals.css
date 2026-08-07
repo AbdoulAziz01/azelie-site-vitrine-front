@@ -1,26 +1,310 @@
 @import "tailwindcss";
 
+/* Le thème est piloté par l'attribut data-theme (next-themes), pas par
+   la préférence système seule — sans ceci, les classes dark: ne
+   réagiraient pas au ThemeToggle quand il diverge de l'OS. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Curseur personnalisé : le natif ne doit disparaître que sur les
+   appareils à pointeur fin où le curseur custom prend réellement le relais
+   (voir components/motion/CustomCursor.tsx qui pose cette classe). */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* AZELIE — Design tokens                                             */
+/* Identité dérivée du logo : bleu marine → sarcelle → or, sur fond   */
+/* clair généreux. Le dégradé bleu-sarcelle-or est la signature       */
+/* visuelle de la marque (croissance tech + organique).               */
+/* ------------------------------------------------------------------ */
+
 :root {
+  /* Bleu marine — primaire (issu du wordmark). Désaturé pour les niveaux
+     de lecture (300-600) afin de rester un neutre élégant ; réservé plus
+     saturé aux titres, surfaces de marque et dégradés (800-950). */
+  --color-ink-50: #f6f7fa;
+  --color-ink-100: #eaedf3;
+  --color-ink-200: #d3d9e4;
+  --color-ink-300: #aab4c8;
+  --color-ink-400: #8290a8;
+  --color-ink-500: #5c6a86;
+  --color-ink-600: #46536f;
+  --color-ink-700: #34405a;
+  --color-ink-800: #24304a;
+  --color-ink-900: #182642;
+  --color-ink-950: #0d1728;
+
+  /* Sarcelle / émeraude — secondaire (issu du corps de l'oiseau) */
+  --color-teal-50: #eefcf9;
+  --color-teal-100: #d3f6ee;
+  --color-teal-200: #a8ecdd;
+  --color-teal-300: #72dcc7;
+  --color-teal-400: #3fc4ab;
+  --color-teal-500: #22a891;
+  --color-teal-600: #178677;
+  --color-teal-700: #156a60;
+  --color-teal-800: #15554e;
+  --color-teal-900: #124541;
+  --color-teal-950: #072826;
+
+  /* Or chaud — accent (issu des pointes d'ailes + flèche du A) */
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faedc7;
+  --color-gold-200: #f5d888;
+  --color-gold-300: #f0be53;
+  --color-gold-400: #eba233;
+  --color-gold-500: #d6862a;
+  --color-gold-600: #b06a1f;
+  --color-gold-700: #8a521d;
+  --color-gold-800: #6f421d;
+  --color-gold-900: #5c371c;
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink-900);
+  --surface: #ffffff;
+  --surface-muted: #f6f8fc;
+  --surface-tint: #f1f7f6;
+  --border-subtle: #e6ebf3;
+
+  --gradient-brand: linear-gradient(
+    120deg,
+    var(--color-ink-800) 0%,
+    var(--color-teal-600) 52%,
+    var(--color-gold-400) 100%
+  );
+  --gradient-brand-soft: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-ink-700) 14%, transparent) 0%,
+    color-mix(in srgb, var(--color-teal-500) 12%, transparent) 50%,
+    color-mix(in srgb, var(--color-gold-400) 16%, transparent) 100%
+  );
+
+  --shadow-brand: 0 24px 48px -22px rgb(20 43 73 / 0.28);
+  --shadow-glow-gold: 0 10px 30px -10px rgb(235 162 51 / 0.45);
+  --shadow-soft: 0 2px 10px -4px rgb(20 43 73 / 0.08);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme="dark"] {
+  --background: var(--color-ink-950);
+  --foreground: var(--color-ink-50);
+  --surface: var(--color-ink-900);
+  --surface-muted: #101f38;
+  --surface-tint: #0e2620;
+  --border-subtle: #223759;
+
+  --shadow-brand: 0 24px 48px -20px rgb(0 0 0 / 0.55);
+  --shadow-soft: 0 2px 10px -4px rgb(0 0 0 / 0.4);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-tint: var(--surface-tint);
+  --color-border-subtle: var(--border-subtle);
+
+  --color-ink-50: var(--color-ink-50);
+  --color-ink-100: var(--color-ink-100);
+  --color-ink-200: var(--color-ink-200);
+  --color-ink-300: var(--color-ink-300);
+  --color-ink-400: var(--color-ink-400);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-950: var(--color-ink-950);
+
+  --color-teal-50: var(--color-teal-50);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-200: var(--color-teal-200);
+  --color-teal-300: var(--color-teal-300);
+  --color-teal-400: var(--color-teal-400);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-700: var(--color-teal-700);
+  --color-teal-800: var(--color-teal-800);
+  --color-teal-900: var(--color-teal-900);
+  --color-teal-950: var(--color-teal-950);
+
+  --color-gold-50: var(--color-gold-50);
+  --color-gold-100: var(--color-gold-100);
+  --color-gold-200: var(--color-gold-200);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-800: var(--color-gold-800);
+  --color-gold-900: var(--color-gold-900);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --background: var(--color-ink-950);
+    --foreground: var(--color-ink-50);
+    --surface: var(--color-ink-900);
+    --surface-muted: #101f38;
+    --surface-tint: #0e2620;
+    --border-subtle: #223759;
+    --shadow-brand: 0 24px 48px -20px rgb(0 0 0 / 0.55);
+    --shadow-soft: 0 2px 10px -4px rgb(0 0 0 / 0.4);
   }
+}
+
+* {
+  border-color: var(--border-subtle);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-ink-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+}
+
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient-brand {
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 8s ease infinite;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(
+    100deg,
+    var(--color-gold-300),
+    var(--color-gold-500) 45%,
+    var(--color-gold-300)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease infinite;
+}
+
+.bg-gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+.bg-gradient-brand-soft {
+  background-image: var(--gradient-brand-soft);
+}
+
+.bg-noise {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(20 43 73 / 0.07) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+:root[data-theme="dark"] .bg-noise {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(255 255 255 / 0.06) 1px,
+    transparent 0
+  );
+}
+
+/* SplitText — masque de révélation ligne/mot/lettre (components/ui/SplitText.tsx) */
+.split-text-mask .word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.split-text-mask .char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(1.03);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 12s var(--ease-out-expo) infinite;
+}
+
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-icon-float {
+    animation: icon-float 4s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-breathe {
+  0%,
+  100% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.16);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-hero-breathe {
+    animation: hero-breathe 16s ease-in-out infinite;
+  }
 }
