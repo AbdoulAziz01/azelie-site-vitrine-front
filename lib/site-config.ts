@@ -277,6 +277,12 @@ export type TeamMember = {
 
 export const team: TeamMember[] = [
   {
+    name: "Mouhamadou Lamine Faye",
+    role: "Co-fondateur & Développeur Full Stack",
+    bio: "Co-fondateur d'AZELIE, construit des applications web et mobiles robustes, du back-office aux interfaces utilisateurs.",
+    photo: "/images/Mouhamadou Lamine Faye.jpeg",
+  },
+  {
     name: "Abdoul Aziz Gueye",
     role: "CEO & Data Scientist — Développeur Full Stack",
     bio: "Fondateur d'AZELIE, pilote la vision de l'entreprise et conçoit des produits web et IA de bout en bout, de la donnée à l'interface.",
@@ -287,12 +293,6 @@ export const team: TeamMember[] = [
     role: "Co-fondateur & Data Analyste",
     bio: "Co-fondateur d'AZELIE, transforme la donnée en décisions concrètes pour guider la stratégie produit et celle de nos clients.",
     photo: "/images/Elie Reyara.jpeg",
-  },
-  {
-    name: "Mouhamadou Lamine Faye",
-    role: "Co-fondateur & Développeur Full Stack",
-    bio: "Co-fondateur d'AZELIE, construit des applications web et mobiles robustes, du back-office aux interfaces utilisateurs.",
-    photo: "/images/Mouhamadou Lamine Faye.jpeg",
   },
 ];
 
