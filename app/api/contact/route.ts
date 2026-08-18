@@ -8,6 +8,8 @@ type ContactPayload = {
   message?: string;
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
 export async function POST(request: Request) {
   const body: ContactPayload = await request.json();
 
@@ -18,8 +20,27 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: brancher un envoi d'email / CRM réel (ex: Resend, HubSpot).
-  console.log("Nouvelle demande de contact AZELIE:", body);
+  const message = body.company
+    ? `Entreprise : ${body.company}\n\n${body.message}`
+    : body.message;
+
+  const backendRes = await fetch(`${API_URL}/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName: body.name,
+      email: body.email,
+      subject: body.service,
+      message,
+    }),
+  });
+
+  if (!backendRes.ok) {
+    return NextResponse.json(
+      { error: "Échec de l'envoi du message." },
+      { status: backendRes.status }
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }
