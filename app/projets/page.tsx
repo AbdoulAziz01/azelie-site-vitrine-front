@@ -10,9 +10,10 @@ import { Cta } from "@/components/sections/Cta";
 import { projects } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Projets",
+  title: "Nos projets et réalisations",
   description:
-    "Applications, plateformes, identité visuelle et automatisations réalisées par AZELIE : un aperçu concret de notre travail.",
+    "Applications, plateformes, identité visuelle et automatisations réalisées par AZELIE au Sénégal : un aperçu concret de notre travail de développement web et digital.",
+  alternates: { canonical: "/projets" },
 };
 
 export default function ProjetsPage() {

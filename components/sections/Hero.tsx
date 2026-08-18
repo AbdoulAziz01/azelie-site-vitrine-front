@@ -10,6 +10,7 @@ import { LinkButton } from "@/components/ui/Button";
 
 const PLAIN_WORDS = ["Transformez", "vos", "idées", "en"];
 const GRADIENT_WORDS = ["solutions", "numériques", "performantes"];
+const TRAILING_WORDS = ["au", "Sénégal"];
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -90,6 +91,24 @@ export function Hero() {
                 style={{ animationDelay: `${i * 0.35}s`, animationDuration: "3.5s" }}
               >
                 {word}&nbsp;
+              </motion.span>
+            ))}
+            {TRAILING_WORDS.map((word, i) => (
+              <motion.span
+                key={word}
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay:
+                    0.15 +
+                    (PLAIN_WORDS.length + GRADIENT_WORDS.length + i) * 0.06,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="inline-block"
+              >
+                {word}
+                {i < TRAILING_WORDS.length - 1 && <>&nbsp;</>}
               </motion.span>
             ))}
             .

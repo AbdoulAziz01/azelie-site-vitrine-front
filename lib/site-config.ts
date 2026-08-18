@@ -3,10 +3,13 @@ export const siteConfig = {
   tagline: "L'ingénierie numérique sénégalaise, à l'échelle du monde.",
   description:
     "AZELIE conçoit des produits Web, Mobile et IA pour les entreprises tout en formant les talents de demain aux métiers du numérique et du digital.",
-  url: "https://azelie.com",
+  url: "https://azeliedigital.jonilink.com",
   email: "azeliedigital@gmail.com",
   phone: "+221 78 951 52 68",
   address: "Dakar, Sénégal — Plateau",
+  locality: "Dakar",
+  region: "Dakar",
+  country: "SN",
   socials: {
     linkedin: "https://linkedin.com/company/azelie",
     twitter: "https://x.com/azelie",

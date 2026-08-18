@@ -20,18 +20,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const message = body.company
-    ? `Entreprise : ${body.company}\n\n${body.message}`
-    : body.message;
-
   const backendRes = await fetch(`${API_URL}/contact`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       fullName: body.name,
       email: body.email,
+      company: body.company,
       subject: body.service,
-      message,
+      message: body.message,
     }),
   });
 

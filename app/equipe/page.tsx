@@ -8,9 +8,10 @@ import { Cta } from "@/components/sections/Cta";
 import { team } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Équipe",
+  title: "Notre équipe",
   description:
-    "Rencontrez les trois fondateurs d'AZELIE : ingénierie, data et développement full stack au service de vos projets.",
+    "Rencontrez les trois fondateurs sénégalais d'AZELIE : ingénierie, data et développement full stack au service de vos projets digitaux au Sénégal.",
+  alternates: { canonical: "/equipe" },
 };
 
 export default function EquipePage() {

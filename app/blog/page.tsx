@@ -9,7 +9,8 @@ import { blogPosts } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Nos réflexions sur la technologie, le produit et la transformation digitale en Afrique.",
+    "Nos réflexions sur la technologie, le produit et la transformation digitale au Sénégal et en Afrique.",
+  alternates: { canonical: "/blog" },
 };
 
 function formatDate(date: string) {

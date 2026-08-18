@@ -11,9 +11,10 @@ import { Cta } from "@/components/sections/Cta";
 import { products } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Produits",
+  title: "Nos produits digitaux",
   description:
-    "Découvrez les produits développés par AZELIE : AzelieEdu, JoniLink et les prochaines solutions pensées pour les entreprises et institutions africaines.",
+    "Découvrez les produits développés par AZELIE au Sénégal : AzelieEdu, JoniLink et les prochaines solutions pensées pour les entreprises et institutions africaines.",
+  alternates: { canonical: "/produits" },
 };
 
 const statusStyles: Record<string, string> = {

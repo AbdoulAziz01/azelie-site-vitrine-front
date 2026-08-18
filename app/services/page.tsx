@@ -20,9 +20,10 @@ import { Cta } from "@/components/sections/Cta";
 import { services, type ServiceItem } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services digitaux au Sénégal",
   description:
-    "Développement web, mobile, IA, automatisation, SaaS, UI/UX design, transformation digitale et formation — découvrez l'ensemble des services AZELIE.",
+    "Développement web, mobile, IA, automatisation, SaaS, UI/UX design, transformation digitale et formation informatique : découvrez les services de l'agence digitale AZELIE au Sénégal.",
+  alternates: { canonical: "/services" },
 };
 
 const iconMap: Record<ServiceItem["icon"], typeof Code2> = {

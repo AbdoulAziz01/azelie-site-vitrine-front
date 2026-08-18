@@ -11,9 +11,10 @@ import { Team } from "@/components/sections/Team";
 import { stats } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "À propos",
+  title: "À propos — Entreprise informatique au Sénégal",
   description:
-    "AZELIE est une entreprise technologique sénégalaise spécialisée en développement web, mobile, IA, automatisation et transformation digitale.",
+    "AZELIE est une entreprise informatique et digitale sénégalaise, basée à Dakar, spécialisée en développement web, mobile, IA, automatisation et transformation digitale.",
+  alternates: { canonical: "/a-propos" },
 };
 
 const values = [

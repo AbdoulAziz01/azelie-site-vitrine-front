@@ -8,9 +8,10 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Agence digitale à Dakar",
   description:
-    "Parlons de votre projet. Contactez l'équipe AZELIE pour démarrer votre transformation digitale.",
+    "Parlons de votre projet. Contactez l'équipe AZELIE, agence informatique et digitale basée à Dakar, Sénégal, pour démarrer votre transformation digitale.",
+  alternates: { canonical: "/contact" },
 };
 
 const contactInfo = [
