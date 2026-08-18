@@ -8,6 +8,7 @@ import { IconChip } from "@/components/ui/IconChip";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Cta } from "@/components/sections/Cta";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { products } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -26,6 +27,12 @@ const statusStyles: Record<string, string> = {
 export default function ProduitsPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Produits", path: "/produits" },
+        ]}
+      />
       <PageHero
         eyebrow="Nos produits"
         title="Des produits maison, conçus pour les réalités du terrain"

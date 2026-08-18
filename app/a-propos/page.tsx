@@ -8,6 +8,7 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { Reveal } from "@/components/ui/Reveal";
 import { Cta } from "@/components/sections/Cta";
 import { Team } from "@/components/sections/Team";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { stats } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -43,6 +44,12 @@ const values = [
 export default function AProposPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "À propos", path: "/a-propos" },
+        ]}
+      />
       <PageHero
         eyebrow="À propos"
         title="Une entreprise technologique sénégalaise, tournée vers le monde"

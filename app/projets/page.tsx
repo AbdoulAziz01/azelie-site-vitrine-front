@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { Cta } from "@/components/sections/Cta";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { projects } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
 export default function ProjetsPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Projets", path: "/projets" },
+        ]}
+      />
       <PageHero
         eyebrow="Nos projets"
         title="Des projets qui créent un impact mesurable"

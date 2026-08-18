@@ -17,6 +17,7 @@ import { IconChip } from "@/components/ui/IconChip";
 import { Reveal } from "@/components/ui/Reveal";
 import { LinkButton } from "@/components/ui/Button";
 import { Cta } from "@/components/sections/Cta";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { services, type ServiceItem } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -40,6 +41,12 @@ const iconMap: Record<ServiceItem["icon"], typeof Code2> = {
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Services", path: "/services" },
+        ]}
+      />
       <PageHero
         eyebrow="Nos services"
         title="Une expertise complète pour construire votre avenir numérique"

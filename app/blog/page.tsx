@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { blogPosts } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -24,6 +25,12 @@ function formatDate(date: string) {
 export default function BlogPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ]}
+      />
       <PageHero
         eyebrow="Blog"
         title="Idées et perspectives"

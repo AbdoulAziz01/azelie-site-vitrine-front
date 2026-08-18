@@ -5,6 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { IconChip } from "@/components/ui/IconChip";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -23,6 +24,12 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
+      />
       <PageHero
         eyebrow="Contact"
         title="Parlons de votre projet"

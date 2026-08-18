@@ -2,11 +2,13 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { Reveal } from "@/components/ui/Reveal";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { faqs } from "@/lib/site-config";
 
 export function Faq() {
   return (
     <section id="faq" className="py-16 sm:py-24">
+      <FaqJsonLd faqs={faqs} />
       <Container className="max-w-3xl">
         <SectionHeading
           eyebrow="FAQ"
