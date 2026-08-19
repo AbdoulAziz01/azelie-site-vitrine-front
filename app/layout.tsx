@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -97,6 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <ThemeProvider>
           <MotionProvider>
             <Navbar />

@@ -5,7 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { Cta } from "@/components/sections/Cta";
-import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { BreadcrumbJsonLd, TeamJsonLd } from "@/components/seo/JsonLd";
 import { team } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -24,6 +24,7 @@ export default function EquipePage() {
           { name: "Équipe", path: "/equipe" },
         ]}
       />
+      <TeamJsonLd team={team} />
       <PageHero
         eyebrow="Équipe"
         title="Les personnes derrière AZELIE"

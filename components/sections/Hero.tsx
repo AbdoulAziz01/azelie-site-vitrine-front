@@ -8,7 +8,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/Button";
 
-const PLAIN_WORDS = ["Transformez", "vos", "idées", "en"];
+const PLAIN_WORDS = ["AZELIE", "transforme", "vos", "idées", "en"];
 const GRADIENT_WORDS = ["solutions", "numériques", "performantes"];
 const TRAILING_WORDS = ["au", "Sénégal"];
 

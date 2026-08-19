@@ -1,4 +1,42 @@
-import { siteConfig, type FaqItem } from "@/lib/site-config";
+import { siteConfig, type FaqItem, type TeamMember } from "@/lib/site-config";
+
+export function WebSiteJsonLd() {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    alternateName: ["Azelie Sénégal", "Azelie Digital"],
+    url: siteConfig.url,
+    inLanguage: "fr-SN",
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function TeamJsonLd({ team }: { team: readonly TeamMember[] }) {
+  const data = team.map((member) => ({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    worksFor: { "@id": `${siteConfig.url}/#organization` },
+  }));
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
 
 export function OrganizationJsonLd() {
   const data = {
