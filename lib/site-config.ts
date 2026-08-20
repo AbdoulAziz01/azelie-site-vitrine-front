@@ -122,8 +122,7 @@ export const services: ServiceItem[] = [
     description:
       "Nous concevons des plateformes web performantes avec Next.js et les meilleures pratiques modernes : vitrines premium, applications métiers, portails clients et back-offices.",
     icon: "code",
-    image:
-      "https://images.unsplash.com/photo-1774901128302-e2bbd154da44?w=1200&q=80",
+    image: "/images/dev.avif",
     features: [
       "Architecture Next.js / TypeScript",
       "SEO technique & performance",
@@ -203,8 +202,7 @@ export const services: ServiceItem[] = [
     description:
       "Chatbots, assistants métiers, analyse de données et automatisation intelligente : nous intégrons l'IA là où elle crée une valeur mesurable.",
     icon: "brain",
-    image:
-      "https://images.unsplash.com/photo-1750365919971-7dd273e7b317?w=1200&q=80",
+    image: "/images/IA.jpeg",
     features: [
       "Assistants IA sur mesure",
       "Automatisation de processus",
@@ -245,8 +243,7 @@ export const services: ServiceItem[] = [
     description:
       "Nous automatisons vos flux internes — facturation, reporting, synchronisation d'outils — pour libérer vos équipes des tâches à faible valeur.",
     icon: "workflow",
-    image:
-      "https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?w=1200&q=80",
+    image: "/images/automatisation.avif",
     features: [
       "Automatisation des workflows",
       "Intégrations entre outils métiers",
@@ -288,8 +285,7 @@ export const services: ServiceItem[] = [
     description:
       "Audit, feuille de route et exécution : nous accompagnons les organisations dans leur passage au numérique, de la stratégie à la mise en œuvre.",
     icon: "sparkles",
-    image:
-      "https://images.unsplash.com/photo-1758873268998-2f77c2d38862?w=1200&q=80",
+    image: "/images/TransformationDigital.avif",
     features: [
       "Audit digital & stratégie",
       "Modernisation des outils internes",
@@ -322,8 +318,7 @@ export const services: ServiceItem[] = [
     description:
       "Nous construisons des produits SaaS complets — architecture multi-tenant, facturation, sécurité — pensés pour croître avec vos utilisateurs.",
     icon: "layers",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    image: "/images/DevSaas.avif",
     features: [
       "Architecture multi-tenant",
       "Facturation & abonnements",
@@ -363,8 +358,7 @@ export const services: ServiceItem[] = [
     description:
       "Recherche utilisateur, wireframes, design system et interfaces finales : chaque écran est pensé pour l'usage réel de vos utilisateurs.",
     icon: "cpu",
-    image:
-      "https://images.unsplash.com/photo-1743385779436-a6950c168fff?w=1200&q=80",
+    image: "/images/UXDESIGN.avif",
     features: [
       "Recherche & parcours utilisateur",
       "Design system sur mesure",
@@ -398,8 +392,7 @@ export const services: ServiceItem[] = [
     description:
       "Des formations pratiques en développement, IA et outils digitaux, adaptées au niveau et aux objectifs de vos équipes.",
     icon: "graduation",
-    image:
-      "https://images.unsplash.com/photo-1758270705290-62b6294dd044?w=1200&q=80",
+    image: "/images/Formations.avif",
     features: [
       "Formations développement web/mobile",
       "Initiation à l'IA appliquée",
