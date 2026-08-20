@@ -308,3 +308,58 @@ body {
     animation: hero-breathe 16s ease-in-out infinite;
   }
 }
+
+@keyframes wave-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.95);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-wave-slow {
+    animation: wave-drift 22s linear infinite;
+  }
+  .animate-wave-medium {
+    animation: wave-drift 15s linear infinite reverse;
+  }
+  .animate-wave-fast {
+    animation: wave-drift 10s linear infinite;
+  }
+  .animate-wave-xfast {
+    animation: wave-drift 7s linear infinite reverse;
+  }
+  .animate-blob-drift {
+    animation: blob-drift 14s ease-in-out infinite;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+}

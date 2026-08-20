@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig, blogPosts } from "@/lib/site-config";
+import { siteConfig, blogPosts, services, team } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -25,5 +25,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const serviceRoutes = services.map((service) => ({
+    url: `${siteConfig.url}/services/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const teamRoutes = team.map((member) => ({
+    url: `${siteConfig.url}/equipe/${member.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...serviceRoutes, ...teamRoutes];
 }

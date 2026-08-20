@@ -6,7 +6,7 @@ import { IconChip } from "@/components/ui/IconChip";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, services } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact — Agence digitale à Dakar",
@@ -21,7 +21,16 @@ const contactInfo = [
   { icon: MapPin, label: "Adresse", value: siteConfig.address, href: undefined },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string }>;
+}) {
+  const { service: serviceParam } = await searchParams;
+  const preselectedService = services.find(
+    (s) => s.slug === serviceParam || s.title === serviceParam
+  );
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -77,7 +86,7 @@ export default function ContactPage() {
                 aria-hidden
                 className="absolute inset-x-0 top-0 h-1 bg-gradient-brand"
               />
-              <ContactForm />
+              <ContactForm defaultService={preselectedService?.title} />
             </div>
           </Reveal>
         </Container>

@@ -1,4 +1,9 @@
-import { siteConfig, type FaqItem, type TeamMember } from "@/lib/site-config";
+import {
+  siteConfig,
+  type FaqItem,
+  type TeamMember,
+  type ServiceItem,
+} from "@/lib/site-config";
 
 export function WebSiteJsonLd() {
   const data = {
@@ -28,6 +33,51 @@ export function TeamJsonLd({ team }: { team: readonly TeamMember[] }) {
     jobTitle: member.role,
     worksFor: { "@id": `${siteConfig.url}/#organization` },
   }));
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function PersonJsonLd({ member }: { member: TeamMember }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    description: member.bio,
+    url: `${siteConfig.url}/equipe/${member.slug}`,
+    ...(member.photo ? { image: `${siteConfig.url}${member.photo}` } : {}),
+    worksFor: { "@id": `${siteConfig.url}/#organization` },
+    ...(member.linkedin || member.github
+      ? { sameAs: [member.linkedin, member.github].filter(Boolean) }
+      : {}),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function ServiceJsonLd({ service }: { service: ServiceItem }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: service.title,
+    name: service.title,
+    description: service.description,
+    url: `${siteConfig.url}/services/${service.slug}`,
+    provider: { "@id": `${siteConfig.url}/#organization` },
+    areaServed: { "@type": "Country", name: "Sénégal" },
+  };
 
   return (
     <script

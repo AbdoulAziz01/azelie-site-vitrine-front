@@ -20,7 +20,7 @@ export function Team() {
         <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member, i) => (
             <Reveal key={member.name} delay={i * 0.08}>
-              <Card className="flex h-full flex-col">
+              <Card href={`/equipe/${member.slug}`} className="flex h-full flex-col">
                 {member.photo ? (
                   <div className="relative -mx-6 -mt-6 mb-6 h-72 overflow-hidden sm:-mx-8 sm:-mt-8">
                     <Image

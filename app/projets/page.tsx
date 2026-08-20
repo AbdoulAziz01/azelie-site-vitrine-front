@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ImageIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
@@ -8,7 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { Cta } from "@/components/sections/Cta";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { projects } from "@/lib/site-config";
+import { projects, services } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Nos projets et réalisations",
@@ -35,7 +36,11 @@ export default function ProjetsPage() {
       <section className="py-16 sm:py-24">
         <Container>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {projects.map((project, i) => (
+            {projects.map((project, i) => {
+              const relatedService = services.find((s) =>
+                s.relatedProjectSlugs.includes(project.slug)
+              );
+              return (
               <Reveal key={project.slug} delay={i * 0.06}>
                 <Card>
                   {project.image ? (
@@ -81,9 +86,19 @@ export default function ProjetsPage() {
                       </span>
                     ))}
                   </div>
+                  {relatedService && (
+                    <Link
+                      href={`/services/${relatedService.slug}`}
+                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold-600 transition-colors hover:text-gold-700 dark:text-gold-300 dark:hover:text-gold-200"
+                    >
+                      Service associé : {relatedService.title}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
                 </Card>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </Container>
       </section>

@@ -74,9 +74,17 @@ export default function ServicesPage() {
                     <p className="mt-4 text-base leading-relaxed text-ink-500 dark:text-ink-300">
                       {service.description}
                     </p>
-                    <LinkButton href="/contact" variant="secondary" className="mt-6">
-                      En discuter avec notre équipe
-                    </LinkButton>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <LinkButton href={`/services/${service.slug}`}>
+                        Découvrir ce service
+                      </LinkButton>
+                      <LinkButton
+                        href={`/contact?service=${service.slug}`}
+                        variant="secondary"
+                      >
+                        En discuter avec notre équipe
+                      </LinkButton>
+                    </div>
                   </div>
                   <div className="overflow-hidden rounded-2xl border border-border-subtle bg-surface-muted">
                     <div className="relative h-48 w-full">

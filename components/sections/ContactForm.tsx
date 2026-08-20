@@ -77,14 +77,21 @@ function Field({
   );
 }
 
-export function ContactForm() {
+export function ContactForm({
+  defaultService,
+}: {
+  /** Titre exact d'un service (site-config.ts > services) à présélectionner. */
+  defaultService?: string;
+}) {
   const {
     register,
     handleSubmit,
     reset,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormValues>();
+  } = useForm<ContactFormValues>({
+    defaultValues: { service: defaultService ?? "" },
+  });
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const formId = useId();
   const messageLength = watch("message")?.length ?? 0;
@@ -194,7 +201,6 @@ export function ContactForm() {
             id={`${formId}-service`}
             disabled={isSubmitting}
             className={cn(inputClasses(!!errors.service), "appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22none%22%20stroke%3D%22%235c6a86%22%20stroke-width%3D%221.5%22%3E%3Cpath%20d%3D%22M5%207.5L10%2012.5L15%207.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[right_16px_center] bg-no-repeat pr-10")}
-            defaultValue=""
             aria-invalid={!!errors.service}
             {...register("service", { required: "Sélectionnez un service" })}
           >

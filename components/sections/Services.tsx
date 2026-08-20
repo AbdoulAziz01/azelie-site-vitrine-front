@@ -45,8 +45,7 @@ export function Services() {
             return (
               <Reveal key={service.slug} delay={(i % 4) * 0.06}>
                 <Card
-                  id={service.slug}
-                  href={`/services#${service.slug}`}
+                  href={`/services/${service.slug}`}
                   className="flex h-full flex-col"
                 >
                   <div className="relative -mx-6 -mt-6 mb-6 h-28 overflow-hidden sm:-mx-8 sm:-mt-8">
