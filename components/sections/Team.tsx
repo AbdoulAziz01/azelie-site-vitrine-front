@@ -17,7 +17,7 @@ export function Team() {
           className="mx-auto"
         />
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member, i) => (
             <Reveal key={member.name} delay={i * 0.08}>
               <Card className="flex h-full flex-col">

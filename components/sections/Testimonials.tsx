@@ -17,7 +17,7 @@ export function Testimonials() {
           className="mx-auto"
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, i) => (
             <Reveal key={testimonial.name} delay={i * 0.08}>
               <figure className="flex h-full flex-col rounded-2xl border border-border-subtle bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">

@@ -34,7 +34,7 @@ export function Services() {
         <SectionHeading
           eyebrow="Nos expertises"
           title="Un savoir-faire complet, du concept au produit fini"
-          description="Huit domaines d'expertise pour accompagner votre entreprise sur l'ensemble de sa trajectoire numérique."
+          description="AZELIE accompagne les particuliers, les entreprises et les étudiants dans le développement web, les logiciels de gestion, les services informatiques, le dépannage, les réseaux, la cybersécurité, l'intelligence artificielle et les formations numériques."
           align="center"
           className="mx-auto"
         />
