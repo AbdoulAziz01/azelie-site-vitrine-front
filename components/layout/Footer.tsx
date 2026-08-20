@@ -25,7 +25,7 @@ export function Footer() {
       <Container className="relative py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
           <div>
-            <Logo imgClassName="h-14 sm:h-16" forceColor />
+            <Logo imgClassName="h-14 sm:h-16" forceColor priority={false} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55 dark:text-ink-500">
               {siteConfig.description}
             </p>

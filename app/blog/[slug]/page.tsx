@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Cta } from "@/components/sections/Cta";
+import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/seo/JsonLd";
 import { blogPosts } from "@/lib/site-config";
 
 function formatDate(date: string) {
@@ -36,6 +37,20 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       publishedTime: post.date,
+      images: [
+        {
+          url: "/images/banniere-afrique.png",
+          width: 1177,
+          height: 660,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: ["/images/banniere-afrique.png"],
     },
   };
 }
@@ -54,6 +69,14 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
+      <BlogPostingJsonLd post={post} />
       <article className="pt-16 pb-24 sm:pt-20 sm:pb-32">
         <Container className="max-w-3xl">
           <Link

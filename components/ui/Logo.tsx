@@ -6,11 +6,14 @@ export function Logo({
   className,
   imgClassName,
   forceColor = false,
+  priority = true,
 }: {
   className?: string;
   imgClassName?: string;
   /** Always render the colored logo, ignoring theme (for surfaces that invert, like the Footer). */
   forceColor?: boolean;
+  /** Précharger l'image en priorité (uniquement pertinent au-dessus de la ligne de flottaison, ex. Navbar). */
+  priority?: boolean;
 }) {
   return (
     <Link
@@ -26,7 +29,7 @@ export function Logo({
         alt="AZELIE"
         width={777}
         height={321}
-        priority
+        priority={priority}
         className={cn(
           "h-9 w-auto sm:h-10",
           !forceColor && "dark:hidden",

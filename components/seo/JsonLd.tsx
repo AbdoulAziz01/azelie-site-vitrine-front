@@ -3,6 +3,7 @@ import {
   type FaqItem,
   type TeamMember,
   type ServiceItem,
+  type BlogPost,
 } from "@/lib/site-config";
 
 export function WebSiteJsonLd() {
@@ -77,6 +78,31 @@ export function ServiceJsonLd({ service }: { service: ServiceItem }) {
     url: `${siteConfig.url}/services/${service.slug}`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "Sénégal" },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: "fr-SN",
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteConfig.url}/blog/${post.slug}` },
+    image: `${siteConfig.url}/images/banniere-afrique.png`,
+    author: { "@id": `${siteConfig.url}/#organization` },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
   };
 
   return (

@@ -105,6 +105,7 @@ export default async function TeamMemberPage({
                 src={member.photo}
                 alt={member.name}
                 fill
+                priority
                 sizes="160px"
                 className="object-cover object-top"
               />
